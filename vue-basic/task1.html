@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>第一次作业练习</title>
+		<!--通过cdn引入Vue.js  -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+	</head>
+	<body>
+		<!-- Vue-app的根容器 -->
+		<div id="app">
+			<img :src="cover" width="300"><br />
+			<a v-bind:href="url">书名:{{title}}</a>
+			<p>作者:{{author}}</p>
+		</div>
+		<script type="text/javascript">
+			//实例化一个Vue对象
+			var app = new Vue({
+				el: '#app',
+				data:{
+					cover:'https://img3.doubanio.com/view/subject/l/public/s30010216.jpg',
+					title:'流浪地球',
+					author:'塑方',
+					url:'https://book.douban.com/subject/30437364/?icn=index-latestbook-subject'
+				}
+			})
+		</script>
+	</body>
+</html>
