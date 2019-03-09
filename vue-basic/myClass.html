@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--通过cdn引入Vue.js  -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			.container {
+				display: flex;
+				width: 60%;
+				margin: 0 auto;
+			}
+
+			.title {
+				font-size: 12px;
+				color: #666;
+			}
+
+			.line {
+				height: 1px;
+				background: #00BBDD;
+			}
+
+			.card {
+				width: 230px;
+				height: 360px;
+				background: #FFF;
+				display: block;
+				float: left;
+				margin: 0 20px 40px 0;
+				padding: 4px;
+				border: double 2px;
+				border-color: whitesmoke;
+			}
+
+			.cover {
+				width: 222px;
+				height: 222px;
+				overflow: hidden;
+			}
+
+			.cls {
+				padding: 20px 0 0 10px;
+				font-size: 14px;
+				color: #333;
+				width: 202px;
+				height: 18px;
+				line-height: 18px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+
+			.name {
+				padding: 5px 0px 5px 10px;
+				font-size: 12px;
+				color: #666;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			.info {
+				padding: 0 10px;
+				float: left;
+			}
+
+			.via {
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+			}
+
+			.master {
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				vertical-align: middle;
+				color: #666;
+				font-size: 12px;
+				text-align: center
+			}
+
+			.num {
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				vertical-align: middle;
+				color: cadetblue;
+				font-size: 12px;
+				text-align: center
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Vue-app的根容器 -->
+		<div id="app">
+			<p class="title" v-if="show">进行中的班课</p>
+			<hr class="line">
+			<div class="container">
+				<div class="card" v-for="course in courses">
+					<img class="cover" :src="course.cover">
+					<p class="cls">{{course.cls}}</p>
+					<p class="name">{{course.name}}</p>
+					<img class="info via" :src="course.via">
+					<p class="info master">{{course.master}}</p>
+					<p class="info num" v-if="course.possess">{{course.num}}</p>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			//实例化一个Vue对象
+			var app = new Vue({
+				el: '#app',
+				data: {
+					show: true,
+					courses: [{
+							name: '高等数学',
+							cover: 'img/myClass/1.png',
+							cls: '软件1721',
+							via: 'img/myClass/via1.jpg',
+							master: '郁凯荣',
+							possess: false,
+							num: '956355'
+						},
+						{
+							name: 'web前端框架技术',
+							cover: 'img/myClass/2.jpg',
+							cls: '软件1721',
+							via: 'img/myClass/via2.jpg',
+							master: '许莫淇',
+							possess: false,
+							num: '819854'
+						},
+						{
+							name: '轻量级框架技术',
+							cover: 'img/myClass/3.jpg',
+							cls: '软件1721',
+							via: 'img/myClass/via2.jpg',
+							master: '许莫淇',
+							possess: false,
+							num: '579096'
+						},
+						{
+							name: 'git初级',
+							cover: 'img/myClass/1.png',
+							cls: '软件1721',
+							via: 'img/myClass/via3.png',
+							master: '刘磊',
+							possess: true,
+							num: '546340'
+						}
+					]
+
+
+				}
+			})
+		</script>
+	</body>
+</html>

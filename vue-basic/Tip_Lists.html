@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--通过cdn引入Vue.js  -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			.authors {
+				width: 400px;
+				height: 600px;
+				padding-top: 0;
+				font-size: 13px;
+				text-align: center;
+			}
+
+			.title {
+				font-size: 26px;
+				color: #969696;
+				text-align: left;
+			}
+
+			.page_chage {
+				float: right;
+				display: inline-block;
+				font-size: 26px;
+				color: #969696;
+				text-align: right;
+			}
+
+			.ul {
+				margin: 10px 20px;
+
+			}
+
+			.via {
+				border-radius: 50px;
+				width: 60px;
+				float: left;
+				margin-right: 10px;
+			}
+
+			.author {
+				font-size: 18px;
+				color: #333333;
+				font-weight: 600;
+			}
+
+			.info {
+				font-size: 14px;
+				color: #969696;
+			}
+
+			.focus {
+				float: right;
+				font-size: 16px;
+				text-align: center;
+			}
+
+			.focus.focus1 {
+				color: #42c02e;
+				;
+			}
+
+			.focus.focus2 {
+				color: #969696;
+			}
+
+			.more {
+				position: absolute;
+				left: 160px;
+				top: 450px;
+				padding: 7px 7px 7px 12px;
+				width: 100px;
+				font-size: 16px;
+				color: #787878;
+				background-color: #f7f7f7;
+				border: 1px solid #dcdcdc;
+				border-radius: 4px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Vue-app的根容器 -->
+		<div id="app" class="authors">
+			<div class="title">
+				<span>推荐作者</span>
+				<span class="page_chage">换一批</span>
+			</div>
+			<ul v-for="list in show_list">
+				<img class="via" :src="list.via">
+				<p class="focus focus2" v-if="list.focus">{{show1}}</p>
+				<p class="focus focus1" v-else>{{show2}}</p>
+				<p class="author">{{list.author}}</p>
+				<span class="info">{{list.info}}</span>
+			</ul>
+			<span class="more">查看全部 ></span>
+		</div>
+		<script type="text/javascript">
+			//实例化一个Vue对象
+			var app = new Vue({
+				el: '#app',
+				data: {
+					show1: '√已关注',
+					show2: '+关注',
+					show_list: [{
+							via: 'https://upload.jianshu.io/users/upload_avatars/8781442/79bf6acc-5dd3-49d1-9e2b-6c58066c1442.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp',
+							author: '胡七筒',
+							info: '寫了327.7k字 · 11k喜歡',
+							focus: true,
+						},
+						{
+							via: 'https://upload.jianshu.io/users/upload_avatars/4802366/4f86b75d-b61b-4126-8be4-87a151c9cd28.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp',
+							author: '汪波_偶遇科学',
+							info: '寫了302.1k字 · 1.9k喜歡',
+							focus: false,
+						},
+						{
+							via: 'https://upload.jianshu.io/users/upload_avatars/3136195/484e32c3504a.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp',
+							author: '梅拾璎',
+							info: '寫了269.3k字 · 23.4k喜歡',
+							focus: true,
+						},
+						{
+							via: 'https://upload.jianshu.io/users/upload_avatars/5545154/1a3d5ed6-9ad1-44b3-9457-3e6a29dd1b71.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp',
+							author: '徐林Grace',
+							info: '寫了677.9k字 · 5.5k喜歡',
+							focus: false,
+						},
+						{
+							via: 'https://upload.jianshu.io/users/upload_avatars/1835526/83d24e1a-0a0f-43f6-8a1d-289be6101e73.png?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp',
+							author: '行距版君',
+							info: '寫了534.6k字 · 51.9k喜歡',
+							focus: false,
+						}
+					]
+
+
+				}
+			})
+		</script>
+	</body>
+</html>

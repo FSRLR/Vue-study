@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Vue.js起步</title>
+		<title>这是一个隐藏和显示的切换练习</title>
 		<!--通过cdn引入Vue.js  -->
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
@@ -10,15 +10,23 @@
 	<body>
 		<!-- Vue-app的根容器 -->
 		<div id="app">
-			<h2>{{message}}</h2>
+			<h2 v-show="show">{{name}}</h2>
+			<button v-on:click="handleClick">隐藏/显示</button>
 		</div>
 		<script type="text/javascript">
 			//实例化一个Vue对象
 			var app = new Vue({
 				el: '#app',
-				data: {
-					message: 'Vue.js',
+			    data:{
+					name:'软件1721',
+					show:false
+				},
+				methods:{
+					handleClick:function(){
+						this.show=!this.show;
+					}
 				}
+				
 			})
 		</script>
 	</body>

@@ -2,22 +2,34 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Vue.js起步</title>
+		<title>这是一个隐藏和显示的切换练习</title>
 		<!--通过cdn引入Vue.js  -->
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 
 	</head>
 	<body>
 		<!-- Vue-app的根容器 -->
 		<div id="app">
-			<h2>{{message}}</h2>
+			<h2 >{{age}}</h2>
+			<button type="button" v-on:click="add">加一岁</button>
+			<button type="button" v-on:click="substrct(5)">减五岁</button>
+
 		</div>
 		<script type="text/javascript">
 			//实例化一个Vue对象
 			var app = new Vue({
 				el: '#app',
-				data: {
-					message: 'Vue.js',
+				data:{
+					age:30,
+				},
+				methods:{
+					add:function(){
+						this.age+=1;
+					},
+					substrct:function(num){
+						this.age-=num
+					}
 				}
 			})
 		</script>
