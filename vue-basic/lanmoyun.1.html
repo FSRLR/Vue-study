@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Vue.js-访问API接口数据-蓝墨云班课练习</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<!-- 通过CDN引入axios -->
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+		<style type="text/css">
+			body {
+				background-color: #fff;
+			}
+
+			.top {
+				width: 100%;
+				height: 60px;
+				margin: 0 auto;
+				border: none;
+				text-align: center;
+				background: #00BBDD;
+				display: flex;
+				justify-content: space-between;
+			}
+
+			.top h3 {
+				font: "microsoft yahei", bold;
+				color: white;
+			}
+
+			.title1 {
+				padding-left: 30px;
+			}
+
+			.title2 {
+				padding-right: 30px;
+			}
+			
+			.input-box{
+				margin-top: 10px;
+				height: 25px;
+				width: 100%;
+				border: 1px solid #ddd;
+				text-align: center;
+				vertical-align: middle;
+				background:#f1f1f1 ;
+				color:#666;
+				
+			}
+			.input-box input{
+				width: 90%;
+				height: 90%;
+				outline: none;
+				font-family: "microsoft yahei", Tahoma;
+				border: none;
+				background: #f1f1f1;
+			}
+
+			.container {
+				width: 100%;
+				margin: 0 auto;
+				padding-top: 20px;
+			}
+
+			p {
+				font-size: 12px;
+				margin-bottom: 5px;
+			}
+
+			.box {
+				display: flex;
+				height: 90px;
+				width: 100%;
+				border: 1px solid #eee;
+			}
+
+			.cover {
+				padding-left: 10px;
+				padding-top: 15px;
+			}
+
+			.cover img {
+				width: 60px;
+				height: 80%;
+
+
+				/* 渲染图片为灰色 */
+				/* -webkit80ilter: grayscale(1); */
+			}
+
+			.info {
+				margin-left: 10px;
+			}
+
+			.course-class {
+				padding-top: 10px;
+				font-family: "arial narrow";
+
+			}
+
+			.course-name {
+				font-family: "arial narrow";
+				font-size: 16px;
+				padding-top: 8px;
+
+			}
+
+			.course-code {
+				padding-top: 8px;
+				display: flex;
+				color: #666;
+				font-size: 12px;
+
+			}
+
+			.code {
+				padding-right: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="top">
+				<h3 class="title1">
+					<i class="icon-cloud ic"></i>&nbsp;班课
+				</h3>
+				<h3 class="title2">
+					<i class="icon-plus icon-large"></i>&emsp;投屏
+				</h3>
+			</div>
+			<div class="input-box">
+				<i class=" icon-search"></i>
+				<input type="text" class="text"  v-model="searchString" placeholder="搜索" />
+			</div>
+			<div class="container">
+				<div v-for="(course, index) in courses" :key="index">
+					<div class="box">
+						<div class="cover">
+							<img :src="'img/'+course.cover">
+						</div>
+						<div class="info">
+							<div class="course-class">
+								{{course.courseClass}}
+							</div>
+							<div class="course-name">
+								{{course.courseName}}
+							</div>
+							<div class="course-code">
+								<div class="code">{{course.username}}</div>
+								<div class="code" v-if="loginUserId === course.userId">学校课表班课</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					loginUserId: 1,
+					courses: [],
+					searchString: ''
+				},
+				computed: {
+					// 计算函数，匹配搜索
+					courses: function() {
+						var courses_array = this.courses,
+							searchString = this.searchString;
+						//搜索关键词为空,则返回原始数据集
+						if (!searchString) {
+							return courses_array;
+						}
+						//搜索关键词去除无用空格,转换为小写
+						searchString = searchString.trim().toLowerCase();
+						//过滤数组中每个元素,如果
+						courses_array = courses_array.filter(function(box) {
+							if (box.title.toLowerCase().indexOf(searchString) !== -1) {
+								return box;
+							}
+						})
+						// 返回转化后的数组
+						return courses_array;;
+					}
+				},
+				created: function() {
+					var _this = this;
+					axios.get('http://192.168.43.147:8080/web/courses')
+						.then(function(response) {
+							console.log(response.data);
+							_this.courses = response.data;
+						})
+				}
+			})
+		</script>
+	</body>
+</html>
