@@ -1,0 +1,85 @@
+
+.top{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	height: 100rpx;
+	width: 100%;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	background-color: #F8F8F8;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+	    -ms-flex-pack: start;
+	        justify-content: flex-start;
+}
+.top image{
+	width: 40rpx;
+	height: 40rpx;
+}
+.content {
+	height: 400rpx;
+}
+.logo {
+	height: 200rpx;
+	width: 200rpx;
+	margin-top: 200rpx;
+}
+.title {
+	font-size: 30rpx;
+	padding-left: 50rpx;
+	padding-right: 200px;
+}
+.message-box{
+	height: 160rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align:center;
+	-webkit-align-items:center;
+	    -ms-flex-align:center;
+	        align-items:center;
+	border: 1rpx solid #ddd;
+	border-top: none;
+}
+.message-box image{
+	-webkit-box-flex: 1;
+	-webkit-flex: 1 1 20%;
+	    -ms-flex: 1 1 20%;
+	        flex: 1 1 20%;
+	width: 45%;
+	height: 80%;
+	padding-left: 20rpx;
+	border-radius: 5rpx;
+	margin-right: 10px;
+	border: 0;
+}
+.details{
+	-webkit-box-flex: 1;
+	-webkit-flex: 1 1 80%;
+	    -ms-flex: 1 1 80%;
+	        flex: 1 1 80%;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+	    -ms-flex-pack: start;
+	        justify-content: flex-start;
+	-webkit-box-align: start;
+	-webkit-align-items: flex-start;
+	    -ms-flex-align: start;
+	        align-items: flex-start;
+}
+.rename{
+	font-size: 36rpx;
+	padding-top: -10rpx;
+	margin-bottom: 5px;
+}
+.message{
+	font-size: 24rpx;
+	color: #8F8F94;
+}
+
+
