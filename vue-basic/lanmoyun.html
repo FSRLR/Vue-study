@@ -150,7 +150,7 @@
 				},
 				created: function() {
 					var _this = this;
-					axios.get('http://127.0.0.1:8080/web/courses')
+					axios.get('http://127.0.0.1:8080/api/courses')
 						.then(function(response) {
 							console.log(response.data);
 							_this.courses = response.data;
