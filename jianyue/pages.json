@@ -56,6 +56,18 @@
 			"style": {
 				"navigationBarTitleText": "头像修改"
 			}
+		},
+		{
+			"path": "pages/signup/signup",
+			"style": {
+				"navigationBarTitleText": "新用户注册"
+			}
+		},
+		{
+			"path": "pages/signup/password",
+			"style": {
+				"navigationBarTitleText": "注册密码"
+			}
 		}
 	],
 	"globalStyle": {

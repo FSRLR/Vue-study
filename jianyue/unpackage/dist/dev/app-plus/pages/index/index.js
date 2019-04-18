@@ -1,0 +1,13 @@
+
+      !(function(){
+        var uniAppViewReadyCallback = function(){
+          setCssToHead([".",[1],"content{ }\n.",[1],"article{ width: 90%; margin: 8px auto; }\n.",[1],"article-title{ font-size: 24px; font-weight: 700; }\n.",[1],"middle-box{ display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; font-size: 20px; margin-top: ",[0,20],"; }\n.",[1],"thumbnail-box{ display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; }\n.",[1],"thumbnail-item{ margin-right: 10px; }\n.",[1],"text-img-box{ display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; margin-right: 10px; }\n.",[1],"left{ -webkit-box-flex: 1; -webkit-flex: 1 1 60%; -ms-flex: 1 1 60%; flex: 1 1 60%; margin-right: 30px; }\n.",[1],"right{ -webkit-box-flex: 1; -webkit-flex: 1 1 40%; -ms-flex: 1 1 40%; flex: 1 1 40%; }\n.",[1],"right wx-image{ width: 100%; height: 100%; }\n.",[1],"article-info{ font-size: 18px; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; margin-top: 20px; }\n.",[1],"small{ width: 40px; height: 40px; }\n.",[1],"thumbnail-item wx-image{ width: 100px; height: 80px; }\n.",[1],"article-box{ border: 1px solid #eee; width: 100%; }\n.",[1],"icon-text { font-size: 20pt; color: #fff; }\n.",[1],"circle-btn { position: fixed; bottom: 20px; right: 10px; width: 45px; height: 45px; border-radius: 50%; background-color: #de533a; background: -o-linear-gradient(50deg, #ffd86f, #fc6262); background: linear-gradient(40deg, #ffd86f, #fc6262); -webkit-box-shadow: 2px 5px 10px #aaa; box-shadow: 2px 5px 10px #aaa; cursor: pointer; border: none; outline: none; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; }\n",],undefined,{path:"./pages/index/index.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/index/index.wxml') } }));
+        }
+        if(window.__uniAppViewReady__){
+          uniAppViewReadyCallback()
+        }else{
+          document.addEventListener('uniAppViewReady',uniAppViewReadyCallback)
+        }
+      })();
+      

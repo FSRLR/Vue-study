@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>websocket示例</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style>
+			.message-box {
+				position: fixed;
+				height: 100px;
+				width: 300px;
+				right: 10px;
+				bottom: 10px;
+				border: #AAAAAA 1px solid;
+				box-shadow: #A9A9A9 0 0 6px 0;
+			}
+			.close-btn {
+				right: 300px;
+				top: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h3>消息显示</h3>
+			<ul>
+				<li v-for="(message, index) in messages" :key="index">
+					{{message}}
+				</li>
+			</ul>
+			<hr>
+			<h3>发送消息 </h3>
+			<input type="text" v-model="sendMsg" />
+			<button type="button" @click="send">发送</button>
+			<div v-show="show" class="message-box">
+				<li v-for="(message, index) in messages" :key="index">
+					{{message}}
+				</li>
+				<button class="close-btn" type="button" @click="close">关闭</button>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var socket;
+			var app = new Vue({
+				el: '#app',
+				data: {
+					messages: [],
+					sendMsg: '',
+					show:false
+				},
+				created: function() {
+					var _this = this;
+					//创建WebSocket对象，指定要连接的服务器地址和端口，建立连接
+					socket = new WebSocket("ws://10.40.249.197:8080/websocket");
+					//打开连接
+					socket.onopen = function() {
+						console.log("Socket已打开");
+
+					};
+					//获得服务端推送的消息
+					socket.onmessage = function(msg) {
+						console.log(msg.data);
+						_this.messages.push(msg.data);
+						console.log(_this.messages);
+					};
+					//关闭连接
+					socket.onclose = function() {
+						console.log("Socket已关闭");
+					};
+					//发送错误
+					socket.onerror = function() {
+						alert("Socket发生了错误");
+					}
+				},
+				watch: {
+					// 如果 `messages` 发生改变，这个函数就会运行
+					messages: function(newMsg, oldMsg) {
+						this.messages = newMsg;
+						this.show=true;
+					},
+				},
+				methods: {
+					close:function(){
+						this.show=false;
+					},
+					send: function() {
+						socket.send(this.sendMsg);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,21 +1,10 @@
+登录页面
 <template>
 	<view class="uni-flex uni-column container">
-		<input
-			class="uni-input"
-			type="number"
-			placeholder="输入手机号"
-			v-model="userDTO.mobile"
-			required="required"
-		/>
-		<input
-			class="uni-input"
-			password
-			type="text"
-			placeholder="输入密码"
-			v-model="userDTO.password"
-			required="required"
-		/>
+		<input class="uni-input" type="number" placeholder="输入手机号" v-model="userDTO.mobile" required="required" />
+		<input class="uni-input" password type="text" placeholder="输入密码" v-model="userDTO.password" required="required" />
 		<button class="green-btn" @tap="signIn(userDTO)">登录</button>
+		<navigator url="../signup/signup" class="nav">注册新账号</navigator>
 	</view>
 </template>
 
@@ -29,14 +18,12 @@ export default {
 			}
 		};
 	},
-	onLoad() {
-	},
+	onLoad() {},
 	methods: {
 		signIn: function(userDTO) {
 			var _this = this;
-			// console.log(userDTO.mobile + ',' + userDTO.password);
 			uni.request({
-				url: 'http://47.101.199.46:8080/api/user/sign_in',
+				url: this.apiServer + '/user/sign_in',
 				method: 'POST',
 				data: {
 					mobile: userDTO.mobile,
@@ -59,7 +46,9 @@ export default {
 						uni.showToast({
 							title: '登录成功'
 						});
-						uni.navigateBack();
+						uni.switchTab({
+							url: '../my/my'
+						});
 					}
 					//登录失败，弹出各种原因
 					else {
@@ -76,9 +65,15 @@ export default {
 </script>
 
 <style scoped>
+.nav {
+	color: #00b26a;
+	margin-top: 15px;
+}
 input {
-	height: 50px;
 	border-bottom: 1px solid #eee;
 	margin-bottom: 5px;
+}
+.container{
+	font-size: 14pt;
 }
 </style>

@@ -1,0 +1,2 @@
+<import src="./change_nickname.vue.wxml" />
+    <template is="fb6d383e" data="{{ ...$root['0'], $root }}"/>

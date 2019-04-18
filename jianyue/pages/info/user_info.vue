@@ -28,7 +28,7 @@ export default {
 	onShow() {
 		var _this = this;
 		uni.request({
-			url: 'http://47.101.199.46:8080/api/user/' + uni.getStorageSync('login_key').userId,
+			url: this.apiServer+'/user/' + uni.getStorageSync('login_key').userId,
 			method: 'GET',
 			header: { 'content-type': 'application/json' },
 			success: res => {
@@ -59,7 +59,7 @@ export default {
 									success: function() {
 										console.log('save success');
 										uni.uploadFile({
-											url: 'http://47.101.199.46:8080/api/user/avatar', //仅为示例，非真实的接口地址
+											url:'http://localhost:8080/api/user/avatar', //仅为示例，非真实的接口地址
 											filePath: res.tempFilePaths[0],
 											name: 'file',
 											formData: {
@@ -84,7 +84,7 @@ export default {
 							success: function(res) {
 								console.log(JSON.stringify(res.tempFilePaths));
 								uni.uploadFile({
-									url: 'http://47.101.199.46:8080/api/user/avatar', //仅为示例，非真实的接口地址
+									url: 'http://localhost:8080/api/user/avatar', //仅为示例，非真实的接口地址
 									filePath: res.tempFilePaths[0],
 									name: 'file',
 									formData: {
@@ -119,5 +119,8 @@ export default {
 }
 .right {
 	flex: 1 1 70%;
+}
+.container{
+	font-size: 14pt;
 }
 </style>

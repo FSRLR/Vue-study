@@ -1,0 +1,13 @@
+
+.nav.data-v-bd16df7c {
+	color: #00b26a;
+	margin-top: 15px;
+}
+._input.data-v-bd16df7c {
+	border-bottom: 1px solid #eee;
+	margin-bottom: 5px;
+}
+.container.data-v-bd16df7c{
+	font-size: 14pt;
+}
+
